@@ -14,5 +14,14 @@
     "express": "^5.1.0",
     "mysql2": "^3.15.3",
     "nodemon": "^3.1.11"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bevans34/lab6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/bevans34/lab6/issues"
+  },
+  "homepage": "https://github.com/bevans34/lab6#readme"
 }
