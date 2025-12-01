@@ -12,10 +12,10 @@ app.use(express.urlencoded({extended:true}));
 //setting up database poolection pool
 const pool = mysql.createPool({
     // IMPORTANT self-note. In a real implementation, we would want to keep these fields secret. (not visible on a public github)
-    host: "edo4plet5mhv93s3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
-    user: "pcuxo4jf4n2j8s2e",
-    password: "gbslqprom3t8n3yx",
-    database: "uoye9fgujzzheqv5",
+    host: "etdq12exrvdjisg6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    user: "s2wl78od50wi578x",
+    password: "hm03gri7s00gvd3c",
+    database: "jg6hr8af9azdw040",
     poolectionLimit: 10,
     waitForpoolections: true
 });
