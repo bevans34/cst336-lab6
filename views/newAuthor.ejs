@@ -1,6 +1,7 @@
-  <h1>Adding a new Author</h1>
+<%- include("partials/head.ejs") %>
 
-
+<body>
+<h1>Adding a new Author</h1>
     <form method="POST" action="/author/new">
       First Name:
       <input type="text" name="fName"><br>
@@ -11,3 +12,7 @@
       <br>  
       <button>Add Author</button>
     </form>
+
+</body>
+<%- include("partials/foot.ejs") %>
+</html>

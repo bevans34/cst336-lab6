@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>CRUD Operations</title>
-</head>
+<%- include("partials/head.ejs") %>
+
 <body>
-  
+
   <h1>Updating Author Data</h1>
 
     <form method="POST" action="/author/edit">
@@ -44,7 +40,10 @@
       
       <button>Update Author</button>
 
-      
-    </form>   
+
+    </form>
 </body>
+
+<%- include("partials/foot.ejs") %>
+
 </html>

@@ -25,12 +25,7 @@ app.get('/', (req, res) => {
     res.render('index');
 });
 
-app.get('/quote/new', async (req, res) => {
-    res.render("newAuthor");
-});
-
-// TODO implement new author post
-
+// Authors
 app.get('/author/new', async (req, res) => {
     res.render("newAuthor");
 });
@@ -93,6 +88,12 @@ app.get("/author/delete", async (req, res) => {
     res.redirect("/authors");
 });
 
+// Quotes
+app.get('/quote/new', async (req, res) => {
+    res.render("newQuote");
+});
+
+// Exoress app listener
 app.listen(3000, ()=>{
     console.log("Express server running");
 })
