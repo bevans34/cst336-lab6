@@ -26,6 +26,7 @@ app.get('/', (req, res) => {
 });
 
 // Authors
+// TODO: Add fields for authors.
 app.get('/author/new', async (req, res) => {
     res.render("newAuthor");
 });
@@ -89,6 +90,7 @@ app.get("/author/delete", async (req, res) => {
 });
 
 // Quotes
+// TODO: add forms/fields for quotes
 app.get('/quote/new', async (req, res) => {
     res.render("newQuote");
 });
