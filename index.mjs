@@ -34,10 +34,16 @@ app.post("/author/new", async (req, res) => {
   let fName = req.body.fName;
   let lName = req.body.lName;
   let birthDate = req.body.birthDate;
+  let deathDate = req.body.deathDate;
+  let sex = req.body.sex;
+  let profession = req.body.profession;
+  let country = req.body.country;
+  let portrait = req.body.portrait;
+  let biography = req.body.biography
   let sql = `INSERT INTO q_authors
-             (firstName, lastName, dob)
-              VALUES (?, ?, ?)`;
-  let params = [fName, lName, birthDate];
+             (firstName, lastName, dob, dod, sex, profession, country, portrait, biography)
+              VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+  let params = [fName, lName, birthDate, deathDate, sex, profession, country, portrait, biography];
   const [rows] = await pool.query(sql, params);
   res.render("newAuthor", 
              {"message": "Author added!"});
@@ -55,7 +61,8 @@ app.get("/author/edit", async function(req, res){
  let authorId = req.query.authorId;
 
  let sql = `SELECT *, 
-        DATE_FORMAT(dob, '%Y-%m-%d') dobISO
+        DATE_FORMAT(dob, '%Y-%m-%d') dobISO,
+        DATE_FORMAT(dod, '%Y-%m-%d') dodISO
         FROM q_authors
         WHERE authorId =  ${authorId}`;
  const [rows] = await pool.query(sql);
@@ -67,12 +74,17 @@ app.post("/author/edit", async function(req, res){
             SET firstName = ?,
                 lastName = ?,
                 dob = ?,
-                sex = ?
+                dod = ?,
+                sex = ?,
+                profession = ?,
+                country = ?,
+                portrait = ?,
+                biography = ?
             WHERE authorId =  ?`;
 
   let params = [req.body.fName,  
-              req.body.lName, req.body.dob, 
-              req.body.sex,req.body.authorId];         
+              req.body.lName, req.body.dob, req.body.dod,
+              req.body.sex, req.body.profession, req.body.country, req.body.portrait, req.body.biography, req.body.authorId];         
   const [rows] = await pool.query(sql,params);
   res.redirect("/authors");
 });
@@ -89,7 +101,6 @@ app.get("/author/delete", async (req, res) => {
 });
 
 // Quotes
-// TODO: add forms/fields for quotes
 app.get('/quote/new', async (req, res) => {
     res.render("newQuote");
 });
@@ -97,11 +108,12 @@ app.get('/quote/new', async (req, res) => {
 app.post("/quote/new", async (req, res) => {
   let quote = req.body.quote;
   let category = req.body.category;
+  let likes = req.body.likes;
   let authorId = req.body.authorId;
   let sql = `INSERT INTO q_quotes
-             (quote, category, authorId)
-              VALUES (?, ?, ?)`;
-  let params = [quote, category, authorId];
+             (quote, category, likes, authorId)
+              VALUES (?, ?, ?, ?)`;
+  let params = [quote, category, likes, authorId];
   const [rows] = await pool.query(sql, params);
   res.render("newQuote", 
              {"message": "Quote added!"});
@@ -113,6 +125,41 @@ app.get("/quotes", async (req, res) => {
             ORDER BY authorId`;
  const [rows] = await pool.query(sql);
  res.render("quoteList", {"quotes":rows});
+});
+
+app.get("/quote/edit", async function(req, res){
+ let quoteId = req.query.quoteId;
+
+ let sql = `SELECT *
+        FROM q_quotes
+        WHERE quoteId =  ${quoteId}`;
+ const [rows] = await pool.query(sql);
+ res.render("editQuote", {"quoteInfo":rows});
+});
+
+app.post("/quote/edit", async function(req, res){
+  let sql = `UPDATE q_quotes
+            SET quote = ?,
+                category = ?,
+                likes = ?,
+                authorId = ?
+            WHERE quoteId =  ?`;
+
+  let params = [req.body.quote, req.body.category, req.body.likes,
+              req.body.authorId, req.body.quoteId];         
+  const [rows] = await pool.query(sql,params);
+  res.redirect("/quotes");
+});
+
+app.get("/quote/delete", async (req, res) => {
+    let quoteId = req.query.quoteId;
+
+    let sql = `DELETE
+               FROM q_quotes
+               WHERE quoteId = ?`;
+
+    const [rows] = await pool.query(sql, [quoteId]);
+    res.redirect("/quotes");
 });
 
 // Exoress app listener

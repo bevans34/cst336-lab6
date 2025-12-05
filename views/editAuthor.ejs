@@ -3,10 +3,12 @@
 <body>
 
   <h1>Updating Author Data</h1>
+    <hr>
 
     <form method="POST" action="/author/edit">
-
-      <input type="hidden" name="authorId" value="<%=authorInfo[0].authorId%>">
+      Author ID:
+      <input type="text" name="authorId" value="<%=authorInfo[0].authorId%>">
+      <br>
 
       First Name:
       <input type="text" name="fName" value="<%=authorInfo[0].firstName%>">
@@ -18,6 +20,10 @@
       
       Date of Birth:
       <input type="date" name="dob"  value="<%=authorInfo[0].dobISO%>">
+      <br>
+
+      Date of Death:
+      <input type="date" name="dod" value="<%=authorInfo[0].dodISO%>">
       <br>
 
       Sex:  
@@ -36,11 +42,18 @@
         <% } %>
         
         > Female
+    <br>
+      Profession:
+      <input type="text" name="profession" value="<%=authorInfo[0].profession%>"><br>
+      Country:
+      <input type="text" name="country" value="<%=authorInfo[0].country%>"><br>
+      Portrait:
+      <input type="text" name="portrait" value="<%=authorInfo[0].portrait%>"><br>
+      Biography:
+      <input type="text" name="biography" value="<%=authorInfo[0].biography%>"><br>
        <br>
       
-      <button>Update Author</button>
-
-
+      <button class="btn btn-success">Update Author</button>
     </form>
 </body>
 

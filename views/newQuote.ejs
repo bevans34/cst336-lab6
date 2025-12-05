@@ -1,16 +1,19 @@
 <%- include("partials/head.ejs") %>
 
 <body>
-<h1>Adding a new Quote</h1>
+<h1 class="p-4 bg-info text-center">Adding a new Quote</h1>
+  <hr>
     <form method="POST" action="/quote/new">
       Quote:
       <input type="text" name="quote"><br>
       Category:
       <input type="text" name="category"><br>
+      Likes:
+      <input type="number" name="likes" min="0"><br>
       Associated Author ID <a href="../authors">(helpful link)</a>:
-      <input type="number" name="authorId">
-      <br>  
-      <button>Add Quote</button>
+      <input type="number" name="authorId" min="0">
+      <br>
+      <button class="btn btn-success">Add Quote</button>
     </form>
 </body>
 <%- include("partials/foot.ejs") %>

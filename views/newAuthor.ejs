@@ -1,16 +1,30 @@
 <%- include("partials/head.ejs") %>
 
 <body>
-<h1>Adding a new Author</h1>
+<h1 class="p-4 bg-info text-center">Adding a new Author</h1>
+  <hr>
     <form method="POST" action="/author/new">
       First Name:
       <input type="text" name="fName"><br>
       Last Name:
       <input type="text" name="lName"><br>
       Date of Birth:
-      <input type="date" name="birthDate">
-      <br>  
-      <button>Add Author</button>
+      <input type="date" name="birthDate"><br>
+      Date of Death:
+      <input type="date" name="deathDate"><br>
+      Sex:
+      <input type="radio" name="sex" value="M">Male
+      <input type="radio" name="sex" value="F">Female
+      <br>
+      Profession:
+      <input type="text" name="profession"><br>
+      Country:
+      <input type="text" name="country"><br>
+      Portrait:
+      <input type="text" name="portrait"><br>
+      Biography:
+      <input type="text" name="biography"><br>
+      <button class="btn btn-success">Add Author</button>
     </form>
 
 </body>

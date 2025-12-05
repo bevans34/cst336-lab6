@@ -3,21 +3,22 @@
 <body>
 
 
- <h1> Update/Delete Quotes </h1>
+ <h1 class="p-4 bg-info text-center"> Update/Delete Quotes </h1>
+   <hr>
 
 
  <% for (i=0; i < quotes.length; i++) { %>
 
 
    <a href="/quote/edit?quoteId=<%=quotes[i].quoteId%>">UPDATE</a>
-   <a href="/quote/delete?authorId=<%=quotes[i].quoteId%>">DELETE</a>
+   <a href="/quote/delete?quoteId=<%=quotes[i].quoteId%>">DELETE</a>
 
    Quote: <em>"<%=quotes[i].quote%>"</em> |
    Category: <%=quotes[i].category%> |
    Associated Author's ID: <%=quotes[i].authorId%><br>
 
  <% } %>
- 
+
  </body>
 
 <%- include("partials/foot.ejs") %>

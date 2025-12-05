@@ -1,0 +1,35 @@
+<%- include("partials/head.ejs") %>
+
+<body>
+
+  <h1 class="p-4 bg-info text-center">Updating Quote Data</h1>
+    <hr>
+
+    <form method="POST" action="/quote/edit">
+      Quote ID:
+      <input type="text" name="quoteId" value="<%=quoteInfo[0].quoteId%>">
+      <br>
+
+      Quote:
+      <input type="text" name="quote" value="<%=quoteInfo[0].quote%>">
+      <br>
+
+      Category:
+      <input type="text" name="category" value="<%=quoteInfo[0].category%>">
+      <br>
+      
+      Likes:
+      <input type="text" name="likes" value="<%=quoteInfo[0].likes%>">
+      <br>
+
+      Associated Author's ID <a href="../authors">(helpful link)</a>:
+      <input type="text" name="authorId"  value="<%=quoteInfo[0].authorId%>">
+      <br><br>
+      
+      <button class="btn btn-success">Update Quote</button>
+    </form>
+</body>
+
+<%- include("partials/foot.ejs") %>
+
+</html>
