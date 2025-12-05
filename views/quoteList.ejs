@@ -1,0 +1,29 @@
+<%- include("partials/head.ejs") %>
+
+<body>
+
+
+ <h1> Update/Delete Quotes </h1>
+
+
+ <% for (i=0; i < quotes.length; i++) { %>
+
+
+   <a href="/quote/edit?quoteId=<%=quotes[i].quoteId%>">UPDATE</a>
+   <a href="/quote/delete?authorId=<%=quotes[i].quoteId%>">DELETE</a><br>
+
+   Quote: <%=quotes[i].quote%> |
+   Category: <%=quotes[i].category%> |
+   Author ID: <%=quotes[i].authorId%><br>
+
+ <% } %>
+
+<form action="/">
+    <button class="btn btn-primary">Return to homepage</button>
+</form>
+
+ </body>
+
+<%- include("partials/foot.ejs") %>
+
+ </html>

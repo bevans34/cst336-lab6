@@ -95,7 +95,15 @@ app.get('/quote/new', async (req, res) => {
     res.render("newQuote");
 });
 
+app.get("/quotes", async (req, res) => {
+ let sql = `SELECT *
+            FROM q_quotes
+            ORDER BY authorId`;
+ const [rows] = await pool.query(sql);
+ res.render("quoteList", {"quotes":rows});
+});
+
 // Exoress app listener
 app.listen(3000, ()=>{
     console.log("Express server running");
-})
+});
