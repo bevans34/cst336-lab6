@@ -1,0 +1,17 @@
+<%- include("partials/head.ejs") %>
+
+<body>
+<h1>Adding a new Quote</h1>
+    <form method="POST" action="/quote/new">
+      Quote:
+      <input type="text" name="quote"><br>
+      Category:
+      <input type="text" name="category"><br>
+      Associated Author ID <a href="../authors">(helpful link)</a>:
+      <input type="number" name="authorId">
+      <br>  
+      <button>Add Quote</button>
+    </form>
+</body>
+<%- include("partials/foot.ejs") %>
+</html>

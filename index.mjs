@@ -26,7 +26,6 @@ app.get('/', (req, res) => {
 });
 
 // Authors
-// TODO: Add fields for authors.
 app.get('/author/new', async (req, res) => {
     res.render("newAuthor");
 });
@@ -47,7 +46,7 @@ app.post("/author/new", async (req, res) => {
 app.get("/authors", async (req, res) => {
  let sql = `SELECT *
             FROM q_authors
-            ORDER BY lastName`;
+            ORDER BY authorId`;
  const [rows] = await pool.query(sql);
  res.render("authorList", {"authors":rows});
 });
@@ -93,6 +92,19 @@ app.get("/author/delete", async (req, res) => {
 // TODO: add forms/fields for quotes
 app.get('/quote/new', async (req, res) => {
     res.render("newQuote");
+});
+
+app.post("/quote/new", async (req, res) => {
+  let quote = req.body.quote;
+  let category = req.body.category;
+  let authorId = req.body.authorId;
+  let sql = `INSERT INTO q_quotes
+             (quote, category, authorId)
+              VALUES (?, ?, ?)`;
+  let params = [quote, category, authorId];
+  const [rows] = await pool.query(sql, params);
+  res.render("newQuote", 
+             {"message": "Quote added!"});
 });
 
 app.get("/quotes", async (req, res) => {

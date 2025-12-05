@@ -1,3 +1,14 @@
+<form action="/" id="return">
+    <br><button class="btn btn-primary">Return to homepage</button>
+</form>
+
+<script>
+    // Hide return to homepage button if on the homepage.
+    if (!(window.location.href.includes("author") || window.location.href.includes("quote"))) {
+        document.getElementById("return").style.display = "none";
+    }
+</script>
+
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <footer>
         <!-- Your last name and year here in ALL assignments -->

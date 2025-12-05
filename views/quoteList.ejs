@@ -10,18 +10,14 @@
 
 
    <a href="/quote/edit?quoteId=<%=quotes[i].quoteId%>">UPDATE</a>
-   <a href="/quote/delete?authorId=<%=quotes[i].quoteId%>">DELETE</a><br>
+   <a href="/quote/delete?authorId=<%=quotes[i].quoteId%>">DELETE</a>
 
-   Quote: <%=quotes[i].quote%> |
+   Quote: <em>"<%=quotes[i].quote%>"</em> |
    Category: <%=quotes[i].category%> |
-   Author ID: <%=quotes[i].authorId%><br>
+   Associated Author's ID: <%=quotes[i].authorId%><br>
 
  <% } %>
-
-<form action="/">
-    <button class="btn btn-primary">Return to homepage</button>
-</form>
-
+ 
  </body>
 
 <%- include("partials/foot.ejs") %>
